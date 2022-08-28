@@ -1,2 +1,2 @@
-# RTSGameRepo
- репозиторий проекта РТС
+# RTSGame
+ 
