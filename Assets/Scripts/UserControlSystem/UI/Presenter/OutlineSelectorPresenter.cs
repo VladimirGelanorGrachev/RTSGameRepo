@@ -1,35 +1,46 @@
-using UnityEngine;
 using Abstractions;
+using UnityEngine;
 using UserControlSystem;
 
 public class OutlineSelectorPresenter : MonoBehaviour
 {
-    [SerializeField] private SelectableValue _selectable;
-
+    [SerializeField] private SelectableValue _selectableValue;
+    
     private OutlineSelector[] _outlineSelectors;
     private ISelectable _currentSelectable;
 
     private void Start()
     {
-        _selectable.OnSelected += onSelected;
-        onSelected(_selectable.CurrentValue);
+        _selectableValue.OnSelected += OnSelected;
     }
-    private void onSelected(ISelectable selectable)
+
+    private void OnSelected(ISelectable selectable)
     {
         if (_currentSelectable == selectable)
         {
             return;
         }
-        _currentSelectable = selectable;
-        setSelected(_outlineSelectors, false);
+        
+
+        SetSelected(_outlineSelectors, false);
         _outlineSelectors = null;
+
         if (selectable != null)
         {
-            _outlineSelectors = (selectable as
-            Component).GetComponentsInParent<OutlineSelector>();
-            setSelected(_outlineSelectors, true);
+            _outlineSelectors = (selectable as Component).GetComponentsInParent<OutlineSelector>();
+            SetSelected(_outlineSelectors, true);
         }
-        static void setSelected(OutlineSelector[] selectors, bool value)
+        else
+        {
+            if (_outlineSelectors != null)
+            {
+                SetSelected(_outlineSelectors, false);
+            }
+        }
+        
+        _currentSelectable = selectable;
+        
+        static void SetSelected(OutlineSelector[] selectors, bool value)
         {
             if (selectors != null)
             {
@@ -40,4 +51,5 @@ public class OutlineSelectorPresenter : MonoBehaviour
             }
         }
     }
+
 }

@@ -9,7 +9,10 @@ public sealed class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISe
     public float MaxHealth => _maxHealth;
     public Sprite Icon => _icon;
 
+    public Transform PivotPoint => _pivotPoint;
+
     [SerializeField] private Transform _unitsParent;
+    [SerializeField] private Transform _pivotPoint;
 
     [SerializeField] private float _maxHealth = 1000;
     [SerializeField] private Sprite _icon;

@@ -1,9 +1,7 @@
 using Abstractions;
-using Abstractions.Commands;
-using Abstractions.Commands.CommandsInterfaces;
 using UnityEngine;
 
-public class Unit : CommandExecutorBase<IAttackCommand>, ISelectable
+public class Unit : MonoBehaviour, ISelectable
 {
     public float Health => _health;
 
@@ -11,16 +9,14 @@ public class Unit : CommandExecutorBase<IAttackCommand>, ISelectable
 
     public Sprite Icon => _icon;
 
-    [SerializeField] private float _maxHealth = 1000;
+    public Transform PivotPoint => _pivotPoint;
+
+    [SerializeField] private float _maxHealth = 25;
     [SerializeField] private Sprite _icon;
+    [SerializeField] private Transform _pivotPoint;
 
 
-    private float _health = 25;
-
-    public override void ExecuteSpecificCommand(IAttackCommand command)
-    {
-        Debug.Log("Юнит атакует");
-    }
+    private float _health = 25;  
 }
 
     

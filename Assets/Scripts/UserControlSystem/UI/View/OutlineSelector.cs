@@ -1,33 +1,45 @@
-using System.Linq;
 using UnityEngine;
 
-public class OutlineSelector : MonoBehaviour
+public sealed class OutlineSelector : MonoBehaviour
 {
-    [SerializeField] private MeshRenderer[] _renderers;
-    [SerializeField] private Material _outlineMaterial;
+    [SerializeField] private Outline[] _outlineComponents;
 
     private bool _isSelectedCache;
 
+    private void Start() => DisableOutline();
+    
     public void SetSelected(bool isSelected)
     {
         if (isSelected == _isSelectedCache)
         {
             return;
         }
-        for (int i = 0; i < _renderers.Length; i++)
+
+        if (isSelected)
         {
-            var renderer = _renderers[i];
-            var materialsList = renderer.materials.ToList();
-            if (isSelected)
-            {
-                materialsList.Add(_outlineMaterial);
-            }
-            else
-            {
-                materialsList.RemoveAt(materialsList.Count - 1);
-            }
-            renderer.materials = materialsList.ToArray();
+            EnableOutline();
         }
+        else
+        {
+            DisableOutline();
+        }
+        
         _isSelectedCache = isSelected;
+    }
+
+    private void DisableOutline()
+    {
+        for (int i = 0; i < _outlineComponents.Length; i++)
+        {
+            _outlineComponents[i].enabled = false;
+        }
+    }
+
+    private void EnableOutline()
+    {
+        for (int i = 0; i < _outlineComponents.Length; i++)
+        {
+            _outlineComponents[i].enabled = true;
+        }
     }
 }

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6eed683afa80db34abd9d8139556e4b1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - _assetsContext: {instanceID: 0}
+  - _groundClicksRMB: {instanceID: 0}
+  - _attackableClicksRMB: {instanceID: 0}
+  - _selectables: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
