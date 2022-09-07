@@ -8,12 +8,12 @@ namespace UserControlSystem
     public class AttackableValue : ScriptableObject
     {
         public IAttackable CurrentValue { get; private set; }
-        public Action<IAttackable> OnAttack;
+        public Action<IAttackable> OnNewValue;
 
         public void SetAttackValue(IAttackable value)
         {
             CurrentValue = value;
-            OnAttack?.Invoke(value);
+            OnNewValue?.Invoke(value);
         }
     }
 }

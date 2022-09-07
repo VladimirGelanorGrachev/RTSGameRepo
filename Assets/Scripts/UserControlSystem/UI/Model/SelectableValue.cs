@@ -14,6 +14,6 @@ namespace UserControlSystem
         {
             CurrentValue = value;
             OnSelected?.Invoke(value);
-        }              
+        }
     }
 }

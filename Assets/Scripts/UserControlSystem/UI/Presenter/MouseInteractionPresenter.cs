@@ -34,14 +34,14 @@ public class MouseInteractionPresenter : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            if(weHit<ISelectable>(hits, out var selectable))
+            if(TryHit<ISelectable>(hits, out var selectable))
             {
                 _selectedObject.SetValue(selectable);
             }            
         }
         else
         {        
-        if (weHit<IAttackable>(hits, out var attackable))
+        if (TryHit<IAttackable>(hits, out var attackable))
         {
             _attackablesRMB.SetAttackValue(attackable);
         }
@@ -51,7 +51,7 @@ public class MouseInteractionPresenter : MonoBehaviour
         }
     }
 
-    bool weHit<T>(RaycastHit[] hits, out T result) where T : class
+    bool TryHit<T>(RaycastHit[] hits, out T result) where T : class
 
         {
             result = default;
