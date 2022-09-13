@@ -15,7 +15,7 @@ namespace UserControlSystem.UI.Presenter
         [Inject] private CommandButtonsModel _model;
 
         private ISelectable _currentSelectable;
-        
+
         private void Start()
         {
             _view.OnClick += _model.OnCommandButtonClicked;
@@ -23,7 +23,7 @@ namespace UserControlSystem.UI.Presenter
             _model.OnCommandCancel += _view.UnblockAllInteractions;
             _model.OnCommandAccepted += _view.BlockInteractions;
 
-            _selectable.OnSelected += ONSelected;
+            _selectable.OnNewValue += ONSelected;
             ONSelected(_selectable.CurrentValue);
         }
 

@@ -43,7 +43,7 @@ public class MouseInteractionPresenter : MonoBehaviour
         {        
         if (TryHit<IAttackable>(hits, out var attackable))
         {
-            _attackablesRMB.SetAttackValue(attackable);
+            _attackablesRMB.SetValue(attackable);
         }
         else if (_groundPlane.Raycast(ray, out var enter))
         {

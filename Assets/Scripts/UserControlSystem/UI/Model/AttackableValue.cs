@@ -1,19 +1,11 @@
 using System;
-using Abstractions;
 using UnityEngine;
 
 namespace UserControlSystem
 {
     [CreateAssetMenu(fileName = nameof(AttackableValue), menuName = "Strategy Game/" + nameof(AttackableValue), order = 0)]
-    public class AttackableValue : ScriptableObject
+    public sealed class AttackableValue : ScriptableObjectValueBase<IAttackable>
     {
-        public IAttackable CurrentValue { get; private set; }
-        public Action<IAttackable> OnNewValue;
-
-        public void SetAttackValue(IAttackable value)
-        {
-            CurrentValue = value;
-            OnNewValue?.Invoke(value);
-        }
+   
     }
 }

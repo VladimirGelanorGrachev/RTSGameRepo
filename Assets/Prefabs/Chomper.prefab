@@ -2036,6 +2036,7 @@ GameObject:
   - component: {fileID: 5602326224976603386}
   - component: {fileID: 920765487932839863}
   - component: {fileID: 4452355970920859243}
+  - component: {fileID: 2053878411985392019}
   m_Layer: 0
   m_Name: Chomper
   m_TagString: Untagged
@@ -2071,7 +2072,7 @@ Animator:
   m_GameObject: {fileID: 6116066217487538448}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 2732fe64dd2799f439fb845921df626b, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bc84b452a645d04a8d91fe675c3c2f1, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -2122,6 +2123,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a7199fb880eb4449a447d552b42276e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _stop: {fileID: 2053878411985392019}
+  _animator: {fileID: 6116066217494964946}
+  _stopCommandExecutor: {fileID: 920765487932839863}
 --- !u!114 &2776512781921497608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2180,6 +2184,19 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &2053878411985392019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6116066217487538448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc97ea4262aa52546872ba406b97dfc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _agent: {fileID: 4452355970920859243}
 --- !u!1 &6116066217487538450
 GameObject:
   m_ObjectHideFlags: 0

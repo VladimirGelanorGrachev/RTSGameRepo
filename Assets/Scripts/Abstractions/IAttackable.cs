@@ -1,7 +1,7 @@
-namespace Abstractions
-{
-    public interface IAttackable : IHealthHolder
-    {
+using Abstractions;
 
-    }
+public interface IAttackable : IHealthHolder
+{
+
 }
+
