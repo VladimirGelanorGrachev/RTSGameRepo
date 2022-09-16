@@ -18,7 +18,7 @@ public sealed class TopPanelPresenter : MonoBehaviour
         timeModel.GameTime.Subscribe(seconds =>
         {
             var t = TimeSpan.FromSeconds(seconds);
-            _inputField.text = $"{t.Minutes:D2}:{t.Seconds:D2}";
+            _inputField.text = $"{t.Hours:D2}:{t.Minutes:D2}:{t.Seconds:D2}";
         });
 
         _menuButton.OnClickAsObservable().Subscribe(_ => _menuGo.SetActive(true));
