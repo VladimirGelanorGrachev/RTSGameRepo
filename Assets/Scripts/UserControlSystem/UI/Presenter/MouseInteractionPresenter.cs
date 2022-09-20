@@ -51,8 +51,7 @@ public class MouseInteractionPresenter : MonoBehaviour
             }
             else if (_groundPlane.Raycast(ray, out var enter))
             {
-                _groundClicksRMB.SetValue(ray.origin + ray.direction *
-                enter);
+                _groundClicksRMB.SetValue(ray.origin + ray.direction * enter);
             }
         });
     }
@@ -63,9 +62,8 @@ public class MouseInteractionPresenter : MonoBehaviour
         if (hits.Length == 0)
             return false;
 
-        result = hits.Select(hits => hits.collider.GetComponentInParent<T>()).Where(c => c != null).FirstOrDefault();
+        result = hits.Select(hits => hits.collider.GetComponentInParent<T>()).FirstOrDefault(c => c != null);
 
         return result != default;
-
     }
 }

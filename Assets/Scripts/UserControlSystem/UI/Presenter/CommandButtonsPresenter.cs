@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using Abstractions;
 using Abstractions.Commands;
-using UniRx;
-using UnityEngine;
+using System.Collections.Generic;
 using UserControlSystem.UI.View;
+using UnityEngine;
 using Zenject;
+using UniRx;
 
 namespace UserControlSystem.UI.Presenter
 {
@@ -46,7 +46,8 @@ namespace UserControlSystem.UI.Presenter
             {
                 var commandExecutors = new List<ICommandExecutor>();
                 commandExecutors.AddRange((selectable as Component).GetComponentsInParent<ICommandExecutor>());
-                _view.MakeLayout(commandExecutors);
+                var queue = (selectable as Component).GetComponentInParent<ICommandQueue>();
+                _view.MakeLayout(commandExecutors, queue);
             }
         }
     }
