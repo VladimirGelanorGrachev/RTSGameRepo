@@ -1896,6 +1896,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1748817644}
     m_Modifications:
     - target: {fileID: 2053878411985392019, guid: 185cff468ffb07749bf69dbb1b6b4db6, type: 3}
+      propertyPath: _collisionDetector
+      value: 
+      objectReference: {fileID: 487943598}
+    - target: {fileID: 2053878411985392019, guid: 185cff468ffb07749bf69dbb1b6b4db6, type: 3}
       propertyPath: _detectorOfCollision
       value: 
       objectReference: {fileID: 487943598}

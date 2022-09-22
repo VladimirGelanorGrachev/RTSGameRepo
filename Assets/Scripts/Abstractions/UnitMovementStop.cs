@@ -12,14 +12,14 @@ namespace Core
         public event Action OnStop;
 
         [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private DetectorOfCollosion _detectorOfCollision;
+        [SerializeField] private CollosionDetector _collisionDetector;
         [SerializeField] private int _throttleFrames = 60;
         [SerializeField] private int _continuityThreshold = 10;
 
 
         private void Awake()
         {
-            _detectorOfCollision.Collisions
+            _collisionDetector.Collisions
                 .Where(_ => _agent.hasPath)
                 .Where(collision => collision.collider.GetComponentInParent<IUnit>() != null)
                 .Select(_ => Time.frameCount)

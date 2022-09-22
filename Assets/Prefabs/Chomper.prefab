@@ -2256,7 +2256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 4452355970920859243}
-  _detectorOfCollision: {fileID: 4691998786701283924}
+  _collisionDetector: {fileID: 4691998786701283924}
   _throttleFrames: 60
   _continuityThreshold: 10
 --- !u!114 &8294358437405252938
