@@ -1,8 +1,4 @@
 using Abstractions;
-using Abstractions.Commands;
-using Abstractions.Commands.CommandsInterfaces;
-using Core.CommandExecutors;
-using System.Threading.Tasks;
 using UnityEngine;
 
 public sealed class MainBuilding : MonoBehaviour, ISelectable
@@ -15,7 +11,6 @@ public sealed class MainBuilding : MonoBehaviour, ISelectable
     public Vector3 RallyPoint { get; set; }
    
     [SerializeField] private Transform _pivotPoint;
-
     [SerializeField] private float _maxHealth = 1000;
     [SerializeField] private Sprite _icon;
 

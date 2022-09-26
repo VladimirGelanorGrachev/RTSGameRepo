@@ -37,7 +37,7 @@ public class MouseInteractionPresenter : MonoBehaviour
 
         lmbHitStream.Subscribe(hits =>
         {
-            if (weHit<ISelectable>(hits, out var selectable))
+            if (WeHit<ISelectable>(hits, out var selectable))
             {
                 _selectedObject.SetValue(selectable);
             }
@@ -45,7 +45,7 @@ public class MouseInteractionPresenter : MonoBehaviour
 
         rmbHitStream.Subscribe((ray, hits) =>
         {
-            if (weHit<IAttackable>(hits, out var attackable))
+            if (WeHit<IAttackable>(hits, out var attackable))
             {
                 _attackablesRMB.SetValue(attackable);
             }
@@ -56,7 +56,7 @@ public class MouseInteractionPresenter : MonoBehaviour
         });
     }
 
-    private bool weHit<T>(RaycastHit[] hits, out T result) where T : class
+    private bool WeHit<T>(RaycastHit[] hits, out T result) where T : class
     {
         result = default;
         if (hits.Length == 0)

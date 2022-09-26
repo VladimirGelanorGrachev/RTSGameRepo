@@ -3,7 +3,10 @@
 namespace Abstractions.Commands.CommandsInterfaces
 {
     public interface IMoveCommand : ICommand
-    {
-        public Vector3 Target { get; }
+    {        
+        public Vector3 Target { get; }        
+       
     }
+
+    
 }

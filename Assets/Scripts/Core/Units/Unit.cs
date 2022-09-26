@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Core
 {
-    public class Unit : MonoBehaviour, ISelectable, IAttackable, IUnit, IDamageDeal
+    public class Unit : MonoBehaviour, ISelectable, IAttackable, IUnit, IDamageDeal, IAutomaticAttacker, IArmor
     {
         public float Health => _health;
 
@@ -15,6 +15,8 @@ namespace Core
         public Transform PivotPoint => _pivotPoint;
 
         public int Damage => _damage;
+        public float VisionRadius => _visionRadius;
+        public int Armor => _armor;
 
         [SerializeField] private Sprite _icon;
         [SerializeField] private Animator _animator;
@@ -22,8 +24,11 @@ namespace Core
         [SerializeField] private Transform _pivotPoint;
         [SerializeField] private float _maxHealth = 25;
         [SerializeField] private int _damage = 5;
+        [SerializeField] private float _visionRadius = 8f;
+        [SerializeField] private int _armor = 2;
 
         private float _health = 25;
+        
 
         public void ReceiveDamage(int amount)
         {

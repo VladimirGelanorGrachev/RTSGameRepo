@@ -15,7 +15,7 @@ namespace UserControlSystem
             Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
                .To<ProduceUnitCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IAttackCommand>>()
-                .To<AttackCommandCommandCreator>().AsTransient();
+                .To<AttackCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IMoveCommand>>()
                 .To<MoveCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<IPatrolCommand>>()

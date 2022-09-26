@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Threading.Tasks;
-using Abstractions.Commands;
 
-namespace Core.CommandExecutors
+
+namespace Abstractions.Commands
 {
     public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor<T> where T : class, ICommand
     {

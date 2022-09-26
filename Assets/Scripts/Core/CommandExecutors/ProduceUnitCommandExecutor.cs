@@ -15,7 +15,7 @@ namespace Core.CommandExecutors
         public IReadOnlyReactiveCollection<IUnitProductionTask> Queue => _queue;
 
         [SerializeField] private Transform _unitsParent;
-        [SerializeField] private int _maximumUnitsInQueue = 6;
+        [SerializeField] private int _maximumUnitsInQueue = 5;
         [Inject] private DiContainer _diContainer;
 
         private ReactiveCollection<IUnitProductionTask> _queue = new ReactiveCollection<IUnitProductionTask>();
@@ -47,15 +47,14 @@ namespace Core.CommandExecutors
             _queue.RemoveAt(_queue.Count - 1);
         }
 
-        public override Task ExecuteSpecificCommand(IProduceUnitCommand command)
+        public override async Task ExecuteSpecificCommand(IProduceUnitCommand command)
         {
             var instance = _diContainer.InstantiatePrefab(command.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
-            var queue = instance.GetComponent<ICommandQueue>();
+            var queue = instance.GetComponent<ICommandsQueue>();
             var mainBuilding = GetComponent<MainBuilding>();
             var factionMember = instance.GetComponent<FactionMember>();
             factionMember.SetFaction(GetComponent<FactionMember>().FactionId);
             queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
-            return Task.CompletedTask;
         }
     }
 }

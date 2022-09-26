@@ -1,19 +1,20 @@
 ﻿using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
-using Core;
-using Core.CommandExecutors;
 using UniRx;
 using UnityEngine;
 using Zenject;
 
-
-    public sealed class ChomperCommandsQueue : MonoBehaviour, ICommandQueue
+namespace Core
+{
+    public sealed class ChomperCommandsQueue : MonoBehaviour, ICommandsQueue
     {
+        public ICommand CurrentCommand => _innerCollection.Count > 0 ? _innerCollection[0] : default;
+
         [Inject] CommandExecutorBase<IMoveCommand> _moveCommandExecutor;
         [Inject] CommandExecutorBase<IPatrolCommand> _patrolCommandExecutor;
         [Inject] CommandExecutorBase<IAttackCommand> _attackCommandExecutor;
         [Inject] CommandExecutorBase<IStopCommand> _stopCommandExecutor;
-        
+
         private ReactiveCollection<ICommand> _innerCollection = new ReactiveCollection<ICommand>();
 
         [Inject]
@@ -63,3 +64,4 @@ using Zenject;
             _stopCommandExecutor.ExecuteSpecificCommand(new StopCommand());
         }
     }
+}

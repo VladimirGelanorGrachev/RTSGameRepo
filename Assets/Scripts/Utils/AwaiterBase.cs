@@ -21,7 +21,7 @@ namespace Utils
                 _continuation = continuation;
             }
         }
-        protected void onWaitFinish(TAwaited result)
+        protected void OnWaitFinish(TAwaited result)
         {
             _result = result;
             _isCompleted = true;

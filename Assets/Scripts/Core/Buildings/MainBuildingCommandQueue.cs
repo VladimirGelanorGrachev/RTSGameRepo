@@ -1,14 +1,15 @@
 ﻿using Abstractions;
 using Abstractions.Commands;
 using Abstractions.Commands.CommandsInterfaces;
-using Core.CommandExecutors;
 using UnityEngine;
 using Zenject;
 
 namespace Core
 {
-    public class MainBuildingCommandQueue: MonoBehaviour, ICommandQueue
+    public class MainBuildingCommandQueue: MonoBehaviour, ICommandsQueue
     {
+        public ICommand CurrentCommand => default;
+
         [Inject] CommandExecutorBase<IProduceUnitCommand> _produceUnitCommandExecutor;
         [Inject] CommandExecutorBase<ISetRallyPointCommand> _setRallyCommandExecutor;
 

@@ -123,7 +123,7 @@ namespace Core.CommandExecutors
                 private void ONComplete()
                 {
                     _attackOperation.OnComplete -= ONComplete;
-                    onWaitFinish(new AsyncExtensions.Void());
+                    OnWaitFinish(new AsyncExtensions.Void());
                 }
             }
 

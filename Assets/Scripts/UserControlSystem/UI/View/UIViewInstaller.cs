@@ -9,7 +9,7 @@ namespace UserControlSystem.UI.View
             Container
                 .Bind<BottomCenterView>()
                 .FromComponentInHierarchy()
-                .AsSingle();
+                .AsSingle();            
         }
     }
 }

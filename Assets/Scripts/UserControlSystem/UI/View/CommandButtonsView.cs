@@ -11,7 +11,7 @@ namespace UserControlSystem.UI.View
 {
     public sealed class CommandButtonsView : MonoBehaviour
     {
-        public Action<ICommandExecutor, ICommandQueue> OnClick;
+        public Action<ICommandExecutor, ICommandsQueue> OnClick;
 
         [SerializeField] private GameObject _attackButton;
         [SerializeField] private GameObject _moveButton;
@@ -57,7 +57,7 @@ namespace UserControlSystem.UI.View
             _setRallyButton.GetComponent<Selectable>().interactable = value;
         }
 
-        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors, ICommandQueue queue)
+        public void MakeLayout(IEnumerable<ICommandExecutor> commandExecutors, ICommandsQueue queue)
         {
             foreach (var currentExecutor in commandExecutors)
             {

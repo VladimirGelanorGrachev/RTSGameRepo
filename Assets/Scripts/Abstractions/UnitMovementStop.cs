@@ -12,7 +12,7 @@ namespace Core
         public event Action OnStop;
 
         [SerializeField] private NavMeshAgent _agent;
-        [SerializeField] private CollosionDetector _collisionDetector;
+        [SerializeField] private CollisionDetector _collisionDetector;
         [SerializeField] private int _throttleFrames = 60;
         [SerializeField] private int _continuityThreshold = 10;
 
