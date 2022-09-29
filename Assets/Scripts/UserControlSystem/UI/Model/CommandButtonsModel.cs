@@ -19,6 +19,8 @@ namespace UserControlSystem
         [Inject] private CommandCreatorBase<IMoveCommand> _mover;
         [Inject] private CommandCreatorBase<IPatrolCommand> _patroller;
         [Inject] private CommandCreatorBase<ISetRallyPointCommand> _setRally;
+        //[Inject] private CommandCreatorBase<IHealCommand> _heal;
+        //[Inject] private CommandCreatorBase<IUpgradeUnitCommand> _upgradeUnit;
 
         private bool _commandIsPending;
 
@@ -37,6 +39,8 @@ namespace UserControlSystem
             _mover.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
             _patroller.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(commandExecutor, commandsQueue));
             _setRally.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+            //_heal.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
+            //_upgradeUnit.ProcessCommandExecutor(commandExecutor, command => ExecuteCommandWrapper(command, commandsQueue));
         }
 
         public void ExecuteCommandWrapper(object command, ICommandsQueue commandsQueue)
@@ -64,6 +68,8 @@ namespace UserControlSystem
             _mover.ProcessCancel();
             _patroller.ProcessCancel();
             _setRally.ProcessCancel();
+            //_heal.ProcessCancel();
+            //_upgradeUnit.ProcessCancel();
 
             OnCommandCancel?.Invoke();
         }

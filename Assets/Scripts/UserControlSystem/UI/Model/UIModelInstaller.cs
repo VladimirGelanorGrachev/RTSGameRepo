@@ -24,12 +24,19 @@ namespace UserControlSystem
                 .To<StopCommandCommandCreator>().AsTransient();
             Container.Bind<CommandCreatorBase<ISetRallyPointCommand>>()
                 .To<SetRallyPointCommandCreator>().AsTransient();
+            //Container.Bind<CommandCreatorBase<IHealCommand>>()
+            //    .To<HealingCommandCreator>().AsTransient();
+            //Container.Bind<CommandCreatorBase<IUpgradeUnitCommand>>()
+            //    .To<UpgradeUnitCommandCreator>().AsTransient();
 
             Container.Bind<CommandButtonsModel>().AsTransient();
 
             Container.Bind<float>().WithId("Chomper").FromInstance(5f);
             Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
             Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);
+            Container.Bind<float>().WithId("Spitter").FromInstance(5f);
+            Container.Bind<string>().WithId("Spitter").FromInstance("Spitter");
+            Container.Bind<Sprite>().WithId("Spitter").FromInstance(_chomperSprite);
 
             Container.Bind<BottomCenterModel>().AsSingle();
         }

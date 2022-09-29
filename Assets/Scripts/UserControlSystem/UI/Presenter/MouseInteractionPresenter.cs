@@ -14,7 +14,7 @@ public class MouseInteractionPresenter : MonoBehaviour
 
     [SerializeField] private Vector3Value _groundClicksRMB;
     [SerializeField] private AttackableValue _attackablesRMB;
-    [SerializeField] private Transform _groundTransform;
+    [SerializeField] private Transform _groundTransform;    
 
     private Plane _groundPlane;
 
@@ -23,19 +23,19 @@ public class MouseInteractionPresenter : MonoBehaviour
     {
         _groundPlane = new Plane(_groundTransform.up, 0);
 
-        var FrameStream = Observable.EveryUpdate()
+        var nonBlockedByUiFramesStream = Observable.EveryUpdate()
             .Where(_ => !_eventSystem.IsPointerOverGameObject());
 
-        var leftClickStream = FrameStream.Where(_ => Input.GetMouseButtonDown(0));
-        var rightClickStream = FrameStream.Where(_ => Input.GetMouseButtonDown(1));
+        var leftClicksStream = nonBlockedByUiFramesStream.Where(_ => Input.GetMouseButtonDown(0));
+        var rightClicksStream = nonBlockedByUiFramesStream.Where(_ => Input.GetMouseButtonDown(1));
 
-        var lmbRays = leftClickStream.Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
-        var rmbRays = rightClickStream.Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+        var lmbRays = leftClicksStream.Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
+        var rmbRays = rightClicksStream.Select(_ => _camera.ScreenPointToRay(Input.mousePosition));
 
-        var lmbHitStream = lmbRays.Select(ray => Physics.RaycastAll(ray));
-        var rmbHitStream = rmbRays.Select(ray => (ray, Physics.RaycastAll(ray)));
+        var lmbHitsStream = lmbRays.Select(ray => Physics.RaycastAll(ray));
+        var rmbHitsStream = rmbRays.Select(ray => (ray, Physics.RaycastAll(ray)));
 
-        lmbHitStream.Subscribe(hits =>
+        lmbHitsStream.Subscribe(hits =>
         {
             if (WeHit<ISelectable>(hits, out var selectable))
             {
@@ -43,7 +43,7 @@ public class MouseInteractionPresenter : MonoBehaviour
             }
         });
 
-        rmbHitStream.Subscribe((ray, hits) =>
+        rmbHitsStream.Subscribe((ray, hits) =>
         {
             if (WeHit<IAttackable>(hits, out var attackable))
             {
@@ -62,7 +62,7 @@ public class MouseInteractionPresenter : MonoBehaviour
         if (hits.Length == 0)
             return false;
 
-        result = hits.Select(hits => hits.collider.GetComponentInParent<T>()).FirstOrDefault(c => c != null);
+        result = hits.Select(hit => hit.collider.GetComponentInParent<T>()).FirstOrDefault(c => c != null);
 
         return result != default;
     }
